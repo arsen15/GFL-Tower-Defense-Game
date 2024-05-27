@@ -7,6 +7,8 @@ public class EntitySpawner : MonoBehaviour
     //List to keep track of all enemies
     public static List<Enemy> EnemiesInGame;
 
+    public static List<Transform> EnemiesInGameTransform;
+
     //Used for Object Pooling
     public static Dictionary<int, GameObject> EnemyPrefabs;
     public static Dictionary<int, Queue<Enemy>> EnemyObjectPools;
@@ -20,6 +22,7 @@ public class EntitySpawner : MonoBehaviour
             EnemyPrefabs = new Dictionary<int, GameObject>();
             EnemyObjectPools = new Dictionary<int, Queue<Enemy>>();
             EnemiesInGame = new List<Enemy>();
+            EnemiesInGameTransform = new List<Transform>();
 
             EnemySpawnData[] Enemies = Resources.LoadAll<EnemySpawnData>("Enemies");
 
@@ -54,7 +57,7 @@ public class EntitySpawner : MonoBehaviour
             } else
             {
                 //Instantiate new instance of enemy and initialize
-                GameObject NewEnemy = Instantiate(EnemyPrefabs[EnemyID], Vector3.zero, Quaternion.identity);
+                GameObject NewEnemy = Instantiate(EnemyPrefabs[EnemyID], GameLoopManager.NodePositions[0], Quaternion.identity);
                 SpawnedEnemy = NewEnemy.GetComponent<Enemy>();
                 SpawnedEnemy.Init();
             }
@@ -63,6 +66,7 @@ public class EntitySpawner : MonoBehaviour
             Debug.Log($"Enemy ID of {EnemyID} does not exist");
         }
 
+        EnemiesInGameTransform.Add(SpawnedEnemy.transform);
         EnemiesInGame.Add( SpawnedEnemy );
         SpawnedEnemy.ID = EnemyID;
 
@@ -74,6 +78,7 @@ public class EntitySpawner : MonoBehaviour
         EnemyObjectPools[EnemyToRemove.ID].Enqueue(EnemyToRemove);
         EnemyToRemove.gameObject.SetActive(false);
         EnemiesInGame.Remove(EnemyToRemove);
+        EnemiesInGameTransform.Remove(EnemyToRemove.transform);
 
     }
 }
