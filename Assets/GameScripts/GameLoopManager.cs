@@ -17,10 +17,17 @@ public class GameLoopManager : MonoBehaviour
     private int currentWaveIndex = 0;
     private bool isSpawningWave = false;
 
+    // Waitiing time at the start of round
+    public float initialWaitTime = 10f;
+
+    // Waiting time between next waves
     public float timeBetweenWaves = 5f;
     private float waveCountdown;
 
+    private bool isInitialWait = true;
+
     public bool LoopShouldEnd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,16 +42,9 @@ public class GameLoopManager : MonoBehaviour
             NodePositions[i] = NodeParent.GetChild(i).position;
         }
 
-        waveCountdown = timeBetweenWaves;
+        waveCountdown = initialWaitTime;
         StartCoroutine(GameLoop());
-        InvokeRepeating("SpawnTest", 0f, 1f);
-        
-
-    }
-
-    void SpawnTest()
-    {
-        EnemyIDToSpawn.Enqueue(1);
+        //InvokeRepeating("SpawnTest", 0f, 1f);
     }
 
     IEnumerator GameLoop()
@@ -60,11 +60,13 @@ public class GameLoopManager : MonoBehaviour
                         StartCoroutine(SpawnWave(waves[currentWaveIndex]));
                         currentWaveIndex++;
                         waveCountdown = timeBetweenWaves;
+                        isInitialWait = false;
                     }
                     else
                     {
                         // No more waves, handle end of game logic here
                         LoopShouldEnd = true;
+                        Debug.Log("Waves Ended!");
                     }
                 }
                 else
@@ -128,13 +130,10 @@ public class GameLoopManager : MonoBehaviour
     {
         isSpawningWave = true;
 
-        if (EnemyIDToSpawn.Count > 0)
+        for (int i = 0; i < wave.enemyCount; i++)
         {
-            for (int i = 0; i < EnemyIDToSpawn.Count; i++)
-            {
-                EntitySpawner.SpawnEnemy(EnemyIDToSpawn.Dequeue());
-                yield return new WaitForSeconds(1f / wave.spawnRate);
-            }
+            EntitySpawner.SpawnEnemy(1);// For now all enemies have ID of 1
+            yield return new WaitForSeconds(1f / wave.spawnRate);
         }
 
         isSpawningWave = false;
