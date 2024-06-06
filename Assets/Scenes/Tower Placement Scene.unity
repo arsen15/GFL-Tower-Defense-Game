@@ -3597,13 +3597,14 @@ MonoBehaviour:
   waves:
   - name: Enemy_Worm
     enemyCount: 5
-    spawnRate: 1
+    spawnRate: 3
+  - name: Enemy_Worm
+    enemyCount: 3
+    spawnRate: 2
   - name: Enemy_Worm
     enemyCount: 5
-    spawnRate: 1
-  - name: Enemy_Worm
-    enemyCount: 5
-    spawnRate: 1
+    spawnRate: 0.3
+  initialWaitTime: 0
   timeBetweenWaves: 5
   LoopShouldEnd: 0
 --- !u!4 &1463384118
