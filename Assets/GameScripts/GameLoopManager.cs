@@ -12,7 +12,14 @@ public class GameLoopManager : MonoBehaviour
     private static Queue<int> EnemyIDToSpawn;
 
     public Transform NodeParent;
-    
+
+    public Wave[] waves;
+    private int currentWaveIndex = 0;
+    private bool isSpawningWave = false;
+
+    public float timeBetweenWaves = 5f;
+    private float waveCountdown;
+
     public bool LoopShouldEnd;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +35,7 @@ public class GameLoopManager : MonoBehaviour
             NodePositions[i] = NodeParent.GetChild(i).position;
         }
 
+        waveCountdown = timeBetweenWaves;
         StartCoroutine(GameLoop());
         InvokeRepeating("SpawnTest", 0f, 1f);
         
@@ -41,20 +49,31 @@ public class GameLoopManager : MonoBehaviour
 
     IEnumerator GameLoop()
     {
-        while (LoopShouldEnd == false )
+        while (!LoopShouldEnd)
         {
-            //Spawn Enemies
-            if (EnemyIDToSpawn.Count > 0)
+            if (!isSpawningWave)
             {
-                for (int i = 0; i < EnemyIDToSpawn.Count; ++i)
+                if (waveCountdown <= 0)
                 {
-                    EntitySpawner.SpawnEnemy(EnemyIDToSpawn.Dequeue());
+                    if (currentWaveIndex < waves.Length)
+                    {
+                        StartCoroutine(SpawnWave(waves[currentWaveIndex]));
+                        currentWaveIndex++;
+                        waveCountdown = timeBetweenWaves;
+                    }
+                    else
+                    {
+                        // No more waves, handle end of game logic here
+                        LoopShouldEnd = true;
+                    }
+                }
+                else
+                {
+                    waveCountdown -= Time.deltaTime;
                 }
             }
 
-            //Spawn Towers
-
-            //Move Enemies
+            // Move Enemies
             NativeArray<Vector3> NodesToUse = new NativeArray<Vector3>(NodePositions, Allocator.TempJob);
             NativeArray<int> NodeIndices = new NativeArray<int>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
             NativeArray<float> EnemySpeeds = new NativeArray<float>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
@@ -92,9 +111,7 @@ public class GameLoopManager : MonoBehaviour
             EnemySpeeds.Dispose();
             EnemyAccess.Dispose();
 
-            //Damage Enemies
-
-            //Remove Enemies
+            // Remove Enemies
             if (enemiesToRemoveQueue.Count > 0)
             {
                 for (int i = 0; i < enemiesToRemoveQueue.Count; i++)
@@ -107,6 +124,22 @@ public class GameLoopManager : MonoBehaviour
         }
     }
 
+    IEnumerator SpawnWave(Wave wave)
+    {
+        isSpawningWave = true;
+
+        if (EnemyIDToSpawn.Count > 0)
+        {
+            for (int i = 0; i < EnemyIDToSpawn.Count; i++)
+            {
+                EntitySpawner.SpawnEnemy(EnemyIDToSpawn.Dequeue());
+                yield return new WaitForSeconds(1f / wave.spawnRate);
+            }
+        }
+
+        isSpawningWave = false;
+    }
+
     public static void EnqueueIDToSpawn(int ID)
     {
         EnemyIDToSpawn.Enqueue(ID);
@@ -117,6 +150,14 @@ public class GameLoopManager : MonoBehaviour
     {
         enemiesToRemoveQueue.Enqueue(EnemyToRemove);
     }
+}
+
+[System.Serializable]
+public class Wave
+{
+    public string name;
+    public int enemyCount;
+    public float spawnRate; // Time between spawns within the wave
 }
 
 public struct MoveEnemiesJob : IJobParallelForTransform
