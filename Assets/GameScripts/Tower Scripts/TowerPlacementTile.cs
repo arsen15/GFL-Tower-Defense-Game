@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TowerPlacementTile : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class TowerPlacementTile : MonoBehaviour
     private Renderer rend;
 
     private GameObject turret;
+
 
     private void Start()
     {
@@ -27,8 +30,11 @@ public class TowerPlacementTile : MonoBehaviour
         }
 
         //Build turret
-        GameObject turretToBuild = TowerBuildManager.instance.GetTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
+        
+        
+            GameObject turretToBuild = TowerBuildManager.instance.GetTurretToBuild();
+            turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
+ 
 
     }
     private void OnMouseEnter()
