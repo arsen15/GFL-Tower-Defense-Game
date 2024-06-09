@@ -3704,6 +3704,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: melon_manor
       objectReference: {fileID: 0}
+    - target: {fileID: 8520469757598801370, guid: 317377a75599d5248b9b408c62772b10, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: df2c243f935d7974191bf58c58022308, type: 2}
+    - target: {fileID: 8520469757598801370, guid: 317377a75599d5248b9b408c62772b10, type: 3}
+      propertyPath: m_Materials.Array.data[9]
+      value: 
+      objectReference: {fileID: 2100000, guid: d96f344c5ae680442bc83cfe96cf52c6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
