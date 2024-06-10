@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3083394557989071991}
   - component: {fileID: 3212613673868464252}
   - component: {fileID: 3161024834046337572}
+  - component: {fileID: 8731564644020795603}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -119,3 +120,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0.6075471, g: 0.5674261, b: 0.5674261, a: 0}
+--- !u!114 &8731564644020795603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547581813404491368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e9ca54b6a41484dada9a0f7df21802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
