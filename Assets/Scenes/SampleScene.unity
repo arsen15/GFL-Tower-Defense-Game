@@ -154,6 +154,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 671661063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &359906902
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303050406591184879, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828054476871427413, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
+      propertyPath: m_Name
+      value: melon_manor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84ff2ade19ff2294984dab1383c5d1db, type: 3}
 --- !u!1 &427855462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,3 +1686,4 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1165661727}
+  - {fileID: 359906902}
