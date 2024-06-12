@@ -13,6 +13,7 @@ public class GameLoopManager : MonoBehaviour
 
     public Transform NodeParent;
 
+    // Use the size of this array to display the number of waves left on screen.
     public Wave[] waves;
     private int currentWaveIndex = 0;
     private bool isSpawningWave = false;
