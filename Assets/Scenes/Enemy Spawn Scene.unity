@@ -1138,11 +1138,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347856711}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1359339649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2862055011096792016, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
-  m_PrefabInstance: {fileID: 8312786740572749021}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1436863645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,32 +1464,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 671661063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2082697698 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7534670057127152064, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
-  m_PrefabInstance: {fileID: 8312786740572749021}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2082697701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082697698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1caa0811fce7d4f40966732270aedc1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 10
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  shootCooldownPeriod: 0.1
-  timeSincePreviousShot: 0
-  velocity: 10
-  apple: {fileID: 8696963064131821509, guid: 09bc46cfaf7e9b245bcfc52150c91b8a, type: 3}
-  barrel: {fileID: 1359339649}
 --- !u!1 &2088304768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,27 +1722,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6242958508699173364, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
-      propertyPath: barrel
-      value: 
-      objectReference: {fileID: 1359339649}
-    - target: {fileID: 6242958508699173364, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
-      propertyPath: barrelHole
-      value: 
-      objectReference: {fileID: 1359339649}
+    - target: {fileID: 4636011118620657696, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
+      propertyPath: xoffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636011118620657696, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
+      propertyPath: zoffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636011118620657696, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7534670057127152064, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
       propertyPath: m_Name
       value: AppleCannon
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6242958508699173364, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 4709166984173052096, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7534670057127152064, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2082697701}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa718e70402f55499983ccf467f28b1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
