@@ -19,7 +19,9 @@ public class Point : MonoBehaviour
     public float timeSincePreviousShot = 0;
     public float velocity;
     public GameObject apple;
-    public GameObject barrelHole;
+    public GameObject barrel;
+    public float xoffset;
+    public float zoffset;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,8 +79,9 @@ public class Point : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject newApple = Instantiate(apple, barrelHole.transform);
-        newApple.GetComponent<Rigidbody>().velocity = barrelHole.transform.forward * velocity;
+        GameObject newApple = Instantiate(apple, new Vector3(barrel.transform.position.x-xoffset, barrel.transform.position.y, barrel.transform.position.z-zoffset), barrel.transform.rotation);
+        //newApple.GetComponent<Rigidbody>().AddForce(barrelHole.transform.forward * velocity, ForceMode.Impulse);
+        newApple.GetComponent<Rigidbody>().velocity =  barrel.transform.forward * velocity;
     }
 
     private void OnDrawGizmos()
