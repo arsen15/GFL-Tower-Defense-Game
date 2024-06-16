@@ -573,6 +573,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3838279205390018259, guid: c6e1acfabd66d7b44b34098d14e5f91a, type: 3}
   m_PrefabInstance: {fileID: 262729375}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &247021436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8657893977993149997, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 9208509072896386805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &251592030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3607,6 +3618,7 @@ MonoBehaviour:
   initialWaitTime: 0
   timeBetweenWaves: 5
   LoopShouldEnd: 0
+  waveNumber: {fileID: 247021436}
 --- !u!4 &1463384118
 Transform:
   m_ObjectHideFlags: 0
@@ -5314,6 +5326,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 448875134}
+    - target: {fileID: 1877109086499277019, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_text
+      value: 'Waves: '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031446822106165747, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031446822106165747, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 190.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296894405330885156, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -27.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8445978007831082343, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
       propertyPath: m_Name
       value: Player UI

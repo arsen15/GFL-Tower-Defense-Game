@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
@@ -29,6 +30,8 @@ public class GameLoopManager : MonoBehaviour
 
     public bool LoopShouldEnd;
 
+    public TextMeshProUGUI waveNumber;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +47,14 @@ public class GameLoopManager : MonoBehaviour
         }
 
         waveCountdown = initialWaitTime;
+        UpdateWaveNumberText();
         StartCoroutine(GameLoop());
         //InvokeRepeating("SpawnTest", 0f, 1f);
+    }
+
+    private void UpdateWaveNumberText()
+    {
+        waveNumber.text = $"{currentWaveIndex + 0} / {waves.Length}";
     }
 
     IEnumerator GameLoop()
@@ -62,6 +71,7 @@ public class GameLoopManager : MonoBehaviour
                         currentWaveIndex++;
                         waveCountdown = timeBetweenWaves;
                         isInitialWait = false;
+                        UpdateWaveNumberText();
                     }
                     else
                     {
