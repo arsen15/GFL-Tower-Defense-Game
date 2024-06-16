@@ -92,5 +92,5 @@ MonoBehaviour:
   NodeIndex: 0
   maxHealth: 0
   Health: 0
-  Speed: 10
+  Speed: 50
   ID: 0

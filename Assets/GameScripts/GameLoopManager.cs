@@ -115,6 +115,8 @@ public class GameLoopManager : MonoBehaviour
 
                 if (EntitySpawner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
                 {
+                    //Damaging the player when enemy reaches end of path
+                    PlayerStats.Lives--;
                     EnqueueEnemyToRemove(EntitySpawner.EnemiesInGame[i]);
                 }
             }
