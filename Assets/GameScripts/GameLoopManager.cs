@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
@@ -12,8 +13,25 @@ public class GameLoopManager : MonoBehaviour
     private static Queue<int> EnemyIDToSpawn;
 
     public Transform NodeParent;
-    
+
+    // Use the size of this array to display the number of waves left on screen.
+    public Wave[] waves;
+    private int currentWaveIndex = 0;
+    private bool isSpawningWave = false;
+
+    // Waitiing time at the start of round
+    public float initialWaitTime = 10f;
+
+    // Waiting time between next waves
+    public float timeBetweenWaves = 5f;
+    private float waveCountdown;
+
+    private bool isInitialWait = true;
+
     public bool LoopShouldEnd;
+
+    public TextMeshProUGUI waveNumber;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,33 +46,47 @@ public class GameLoopManager : MonoBehaviour
             NodePositions[i] = NodeParent.GetChild(i).position;
         }
 
+        waveCountdown = initialWaitTime;
+        UpdateWaveNumberText();
         StartCoroutine(GameLoop());
-        InvokeRepeating("SpawnTest", 0f, 1f);
-        
-
+        //InvokeRepeating("SpawnTest", 0f, 1f);
     }
 
-    void SpawnTest()
+    private void UpdateWaveNumberText()
     {
-        EnemyIDToSpawn.Enqueue(1);
+        waveNumber.text = $"{currentWaveIndex + 0} / {waves.Length}";
     }
 
     IEnumerator GameLoop()
     {
-        while (LoopShouldEnd == false )
+        while (!LoopShouldEnd)
         {
-            //Spawn Enemies
-            if (EnemyIDToSpawn.Count > 0)
+            if (!isSpawningWave)
             {
-                for (int i = 0; i < EnemyIDToSpawn.Count; ++i)
+                if (waveCountdown <= 0)
                 {
-                    EntitySpawner.SpawnEnemy(EnemyIDToSpawn.Dequeue());
+                    if (currentWaveIndex < waves.Length)
+                    {
+                        StartCoroutine(SpawnWave(waves[currentWaveIndex]));
+                        currentWaveIndex++;
+                        waveCountdown = timeBetweenWaves;
+                        isInitialWait = false;
+                        UpdateWaveNumberText();
+                    }
+                    else
+                    {
+                        // No more waves, handle end of game logic here
+                        LoopShouldEnd = true;
+                        Debug.Log("Waves Ended!");
+                    }
+                }
+                else
+                {
+                    waveCountdown -= Time.deltaTime;
                 }
             }
 
-            //Spawn Towers
-
-            //Move Enemies
+            // Move Enemies
             NativeArray<Vector3> NodesToUse = new NativeArray<Vector3>(NodePositions, Allocator.TempJob);
             NativeArray<int> NodeIndices = new NativeArray<int>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
             NativeArray<float> EnemySpeeds = new NativeArray<float>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
@@ -83,6 +115,8 @@ public class GameLoopManager : MonoBehaviour
 
                 if (EntitySpawner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
                 {
+                    //Damaging the player when enemy reaches end of path
+                    PlayerStats.Lives--;
                     EnqueueEnemyToRemove(EntitySpawner.EnemiesInGame[i]);
                 }
             }
@@ -92,9 +126,7 @@ public class GameLoopManager : MonoBehaviour
             EnemySpeeds.Dispose();
             EnemyAccess.Dispose();
 
-            //Damage Enemies
-
-            //Remove Enemies
+            // Remove Enemies
             if (enemiesToRemoveQueue.Count > 0)
             {
                 for (int i = 0; i < enemiesToRemoveQueue.Count; i++)
@@ -107,6 +139,19 @@ public class GameLoopManager : MonoBehaviour
         }
     }
 
+    IEnumerator SpawnWave(Wave wave)
+    {
+        isSpawningWave = true;
+
+        for (int i = 0; i < wave.enemyCount; i++)
+        {
+            EntitySpawner.SpawnEnemy(1);// For now all enemies have ID of 1
+            yield return new WaitForSeconds(1f / wave.spawnRate);
+        }
+
+        isSpawningWave = false;
+    }
+
     public static void EnqueueIDToSpawn(int ID)
     {
         EnemyIDToSpawn.Enqueue(ID);
@@ -117,6 +162,14 @@ public class GameLoopManager : MonoBehaviour
     {
         enemiesToRemoveQueue.Enqueue(EnemyToRemove);
     }
+}
+
+[System.Serializable]
+public class Wave
+{
+    public string name;
+    public int enemyCount;
+    public float spawnRate; // Time between spawns within the wave
 }
 
 public struct MoveEnemiesJob : IJobParallelForTransform
