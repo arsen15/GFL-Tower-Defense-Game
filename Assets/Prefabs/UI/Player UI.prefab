@@ -1092,6 +1092,7 @@ GameObject:
   - component: {fileID: 128895643334096399}
   - component: {fileID: 7982735380663430779}
   - component: {fileID: 147075922323274949}
+  - component: {fileID: 926491552729114302}
   m_Layer: 5
   m_Name: HealthAndMoneyContainer
   m_TagString: Untagged
@@ -1160,6 +1161,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &926491552729114302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556628449047893006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc993604992d114390a08cdbf491b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 6480036347685943592}
+  seconds: 2
 --- !u!1 &2710802862850523508
 GameObject:
   m_ObjectHideFlags: 0
