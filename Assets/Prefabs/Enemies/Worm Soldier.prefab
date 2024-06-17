@@ -60,9 +60,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: f179f33ef3b926344b94220cdf247948, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7029948723529949830, guid: f179f33ef3b926344b94220cdf247948, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_Name
       value: Worm Soldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f179f33ef3b926344b94220cdf247948, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5859259852128964746, guid: f179f33ef3b926344b94220cdf247948, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -92,5 +108,5 @@ MonoBehaviour:
   NodeIndex: 0
   maxHealth: 0
   Health: 0
-  Speed: 50
+  Speed: 10
   ID: 0
