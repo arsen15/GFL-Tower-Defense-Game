@@ -15,4 +15,20 @@ public class Enemy : MonoBehaviour
         transform.position = GameLoopManager.NodePositions[0];
         NodeIndex = 0;
     }
+    public int coins = 2;
+    void Die()
+    {
+        PlayerStats.Money += coins;
+        Destroy(gameObject);
+    }
+
+    public void TakeDamage (float amount)
+	{
+		Health -= amount;
+
+		if (Health <= 0)
+		{
+			Die();
+		}
+	}
 }
