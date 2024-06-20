@@ -5,11 +5,20 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     private Transform target;
+
+    [Header("Attributes")]
     public float range = 15f;
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
 
+    [Header("Unity Set up Fields")]
     public Transform partToRotate;
-
     public float rotationSpeed = 10f;
+
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -59,11 +68,36 @@ public class Tower : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
+        if (fireCountdown <= 0f)
+        {
+            Shoot();
+            fireCountdown = 1f / fireRate;
+        }
+        fireCountdown -= Time.deltaTime;
+
+    }
+
+    void Shoot()
+    {
+        GameObject currentBullet = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        MelonBullet melonBullet = currentBullet.GetComponent<MelonBullet>(); 
+
+        if (melonBullet != null)
+        {
+            melonBullet.Seek(target);
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+
+        if (firePoint != null)
+        {
+            Debug.Log("fire point is here");
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(firePoint.position, 0.2f); // Draw a small blue sphere at the firePoint position
+        }
     }
 }

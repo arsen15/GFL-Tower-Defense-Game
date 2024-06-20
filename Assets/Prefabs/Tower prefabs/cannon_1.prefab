@@ -415,6 +415,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3553099585867184894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7823821882128578375}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7823821882128578375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553099585867184894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1002, y: 0.0614, z: -0.0002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4875044168654060648}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6240859788991596518
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +492,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 6
+  fireRate: 1
   partToRotate: {fileID: 4875044168654060648}
+  rotationSpeed: 10
+  bulletPrefab: {fileID: 8696963064131821509, guid: 09bc46cfaf7e9b245bcfc52150c91b8a, type: 3}
+  firePoint: {fileID: 7823821882128578375}
 --- !u!1 &7220984931745027178
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +533,7 @@ Transform:
   - {fileID: 7996187895857941248}
   - {fileID: 2283654516086956087}
   - {fileID: 4610614786937580403}
+  - {fileID: 7823821882128578375}
   m_Father: {fileID: 7327297452060672141}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &8370007666735224907
