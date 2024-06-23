@@ -35,12 +35,16 @@ public class Tower : MonoBehaviour
         // If target is in range, set it to be the target
         foreach (Enemy enemy in EntitySpawner.EnemiesInGame)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
+            if ( enemy != null )
             {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distanceToEnemy < shortestDistance)
+                {
+                    shortestDistance = distanceToEnemy;
+                    nearestEnemy = enemy;
+                }
             }
+            
         }
 
         if (nearestEnemy != null && shortestDistance <= range)

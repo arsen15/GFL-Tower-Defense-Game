@@ -26,7 +26,7 @@ public class GameLoopManager : MonoBehaviour
     public float timeBetweenWaves = 5f;
     private float waveCountdown;
 
-    private bool isInitialWait = true;
+    //private bool isInitialWait = true;
 
     public bool LoopShouldEnd;
 
@@ -49,6 +49,7 @@ public class GameLoopManager : MonoBehaviour
         waveCountdown = initialWaitTime;
         UpdateWaveNumberText();
         StartCoroutine(GameLoop());
+        StartCoroutine(MoveEnemies());
         //InvokeRepeating("SpawnTest", 0f, 1f);
     }
 
@@ -70,7 +71,7 @@ public class GameLoopManager : MonoBehaviour
                         StartCoroutine(SpawnWave(waves[currentWaveIndex]));
                         currentWaveIndex++;
                         waveCountdown = timeBetweenWaves;
-                        isInitialWait = false;
+                        //isInitialWait = false;
                         UpdateWaveNumberText();
                     }
                     else
@@ -86,55 +87,65 @@ public class GameLoopManager : MonoBehaviour
                 }
             }
 
-            // Move Enemies
-            NativeArray<Vector3> NodesToUse = new NativeArray<Vector3>(NodePositions, Allocator.TempJob);
-            NativeArray<int> NodeIndices = new NativeArray<int>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
-            NativeArray<float> EnemySpeeds = new NativeArray<float>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
-            TransformAccessArray EnemyAccess = new TransformAccessArray(EntitySpawner.EnemiesInGameTransform.ToArray(), 2);
+            yield return null;
+        }
+    }
 
-            for (int i = 0; i < EntitySpawner.EnemiesInGame.Count; i++)
+    IEnumerator MoveEnemies()
+    {
+        while (true)
+        {
+            if (EntitySpawner.EnemiesInGame.Count > 0)
             {
-                EnemySpeeds[i] = EntitySpawner.EnemiesInGame[i].Speed;
-                NodeIndices[i] = EntitySpawner.EnemiesInGame[i].NodeIndex;
-            }
+                // Move Enemies
+                NativeArray<Vector3> NodesToUse = new NativeArray<Vector3>(NodePositions, Allocator.TempJob);
+                NativeArray<int> NodeIndices = new NativeArray<int>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
+                NativeArray<float> EnemySpeeds = new NativeArray<float>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
+                TransformAccessArray EnemyAccess = new TransformAccessArray(EntitySpawner.EnemiesInGameTransform.ToArray(), 2);
 
-            MoveEnemiesJob MoveJob = new MoveEnemiesJob
-            {
-                NodePositions = NodesToUse,
-                EnemySpeeds = EnemySpeeds,
-                NodeIndex = NodeIndices,
-                deltaTime = Time.deltaTime
-            };
-
-            JobHandle MoveEnemyJobHandle = MoveJob.Schedule(EnemyAccess);
-            MoveEnemyJobHandle.Complete();
-
-            for (int i = 0; i < EntitySpawner.EnemiesInGame.Count; i++)
-            {
-                EntitySpawner.EnemiesInGame[i].NodeIndex = NodeIndices[i];
-
-                if (EntitySpawner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
+                for (int i = 0; i < EntitySpawner.EnemiesInGame.Count; i++)
                 {
-                    //Damaging the player when enemy reaches end of path
-                    PlayerStats.Lives--;
-                    EnqueueEnemyToRemove(EntitySpawner.EnemiesInGame[i]);
+                    EnemySpeeds[i] = EntitySpawner.EnemiesInGame[i].Speed;
+                    NodeIndices[i] = EntitySpawner.EnemiesInGame[i].NodeIndex;
+                }
+
+                MoveEnemiesJob MoveJob = new MoveEnemiesJob
+                {
+                    NodePositions = NodesToUse,
+                    EnemySpeeds = EnemySpeeds,
+                    NodeIndex = NodeIndices,
+                    deltaTime = Time.deltaTime
+                };
+
+                JobHandle MoveEnemyJobHandle = MoveJob.Schedule(EnemyAccess);
+                MoveEnemyJobHandle.Complete();
+
+                for (int i = 0; i < EntitySpawner.EnemiesInGame.Count; i++)
+                {
+                    EntitySpawner.EnemiesInGame[i].NodeIndex = NodeIndices[i];
+
+                    if (EntitySpawner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
+                    {
+                        //Damaging the player when enemy reaches end of path
+                        PlayerStats.Lives--;
+                        EnqueueEnemyToRemove(EntitySpawner.EnemiesInGame[i]);
+                    }
+                }
+
+                NodesToUse.Dispose();
+                NodeIndices.Dispose();
+                EnemySpeeds.Dispose();
+                EnemyAccess.Dispose();
+
+                // Remove Enemies
+                if (enemiesToRemoveQueue.Count > 0)
+                {
+                    for (int i = 0; i < enemiesToRemoveQueue.Count; i++)
+                    {
+                        EntitySpawner.RemoveEnemy(enemiesToRemoveQueue.Dequeue());
+                    }
                 }
             }
-
-            NodesToUse.Dispose();
-            NodeIndices.Dispose();
-            EnemySpeeds.Dispose();
-            EnemyAccess.Dispose();
-
-            // Remove Enemies
-            if (enemiesToRemoveQueue.Count > 0)
-            {
-                for (int i = 0; i < enemiesToRemoveQueue.Count; i++)
-                {
-                    EntitySpawner.RemoveEnemy(enemiesToRemoveQueue.Dequeue());
-                }
-            }
-
             yield return null;
         }
     }

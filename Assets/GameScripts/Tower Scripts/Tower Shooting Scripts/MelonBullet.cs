@@ -7,6 +7,7 @@ public class MelonBullet : MonoBehaviour
     private Transform target;
 
     public float speed = 70f;
+    public int damage = 10;
 
     public GameObject bulletImpactEffect;
 
@@ -43,6 +44,14 @@ public class MelonBullet : MonoBehaviour
     void HitTarget()
     {
         Debug.Log("We hit something");
+
+        // Get the Enemy component from target
+        Enemy e = target.GetComponent<Enemy>();
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
+        // Instantiate impact effect
         GameObject effectInstance = (GameObject)Instantiate(bulletImpactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 2f);
         Destroy(gameObject);
