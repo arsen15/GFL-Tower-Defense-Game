@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MelonBullet : MonoBehaviour
 {
+    // The enemy is the target
     private Transform target;
 
     public float speed = 70f;
