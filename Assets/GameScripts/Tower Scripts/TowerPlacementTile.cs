@@ -14,7 +14,6 @@ public class TowerPlacementTile : MonoBehaviour
 
     private GameObject turret;
 
-
     private void Start()
     {
         rend = GetComponent<Renderer>();
@@ -32,9 +31,17 @@ public class TowerPlacementTile : MonoBehaviour
         //Build turret
         
         
-            GameObject turretToBuild = TowerBuildManager.instance.GetTurretToBuild();
-            turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
+        GameObject turretToBuild = TowerBuildManager.instance.GetTurretToBuild();
  
+        int towerCost = TowerBuildManager.instance.GetTurretCost(turretToBuild);
+
+        if (PlayerStats.Money < towerCost)
+        {
+            Debug.Log("Need more money!");
+            return;
+        }
+        PlayerStats.Money -= towerCost;
+        turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
 
     }
     private void OnMouseEnter()
