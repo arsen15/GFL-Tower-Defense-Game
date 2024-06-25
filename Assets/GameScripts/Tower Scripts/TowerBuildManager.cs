@@ -10,6 +10,8 @@ public class TowerBuildManager : MonoBehaviour
     private GameObject turretToBuild;
     public GameObject standardTurretPrefab;
 
+    private Dictionary<GameObject, int> turretCosts = new Dictionary<GameObject, int>();
+
     // Singleton pattern cont.
     private void Awake()
     {
@@ -19,6 +21,8 @@ public class TowerBuildManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        turretCosts.Add(standardTurretPrefab, 3);
     }
 
     
@@ -31,5 +35,18 @@ public class TowerBuildManager : MonoBehaviour
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;
+    }
+
+    public int GetTurretCost(GameObject turretPrefab)
+    {
+        if (turretCosts.ContainsKey(turretPrefab))
+        {
+            return turretCosts[turretPrefab];
+        }
+        else 
+        {
+            Debug.LogWarning("Turret cost not found!");
+            return 0;
+        }
     }
 }
