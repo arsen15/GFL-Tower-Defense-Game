@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 649a117d09f39cc43ad31baf34d99b64
-  - enabled: 0
-    path: Assets/Scenes/Tower Placement Scene.unity
-    guid: 00a1ec280e67345458b9a9adf705a175
+  - enabled: 1
+    path: Assets/Scenes/Level 1 Testing Scene.unity
+    guid: 5d0bbd30e7f0a094393513df4ef39292
   m_configObjects: {}

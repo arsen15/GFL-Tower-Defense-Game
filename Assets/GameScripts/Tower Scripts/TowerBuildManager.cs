@@ -8,7 +8,10 @@ public class TowerBuildManager : MonoBehaviour
     public static TowerBuildManager instance;
 
     private GameObject turretToBuild;
-    public GameObject standardTurretPrefab;
+
+    public GameObject melonTower;
+    public GameObject appleTower;
+
 
     private Dictionary<GameObject, int> turretCosts = new Dictionary<GameObject, int>();
 
@@ -22,19 +25,19 @@ public class TowerBuildManager : MonoBehaviour
         }
         instance = this;
 
-        turretCosts.Add(standardTurretPrefab, 3);
+        turretCosts.Add(melonTower, 3);
     }
 
     
 
-    private void Start()
-    {
-        turretToBuild = standardTurretPrefab;
-    }
-
-    public GameObject GetTurretToBuild()
+    public GameObject GetTowerToBuild()
     {
         return turretToBuild;
+    }
+
+    public void SetTowerToBuild(GameObject tower)
+    {
+        turretToBuild = tower;
     }
 
     public int GetTurretCost(GameObject turretPrefab)

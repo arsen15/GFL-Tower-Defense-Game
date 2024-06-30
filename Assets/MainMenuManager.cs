@@ -5,15 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
-    public void GameStart()
+    public void Play()
     {
-        SceneManager.LoadScene("Tower Placement Scene (With UI)");
+        //SceneManager.LoadScene("Tower Placement Scene (With UI)");
+        Debug.Log("Pressed Play");
+        SceneManager.LoadScene("Scenes/Level 1");
     }
 }

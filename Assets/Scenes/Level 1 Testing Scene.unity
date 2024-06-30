@@ -3875,6 +3875,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6e1acfabd66d7b44b34098d14e5f91a, type: 3}
+--- !u!1 &1706312051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6240859788991596518, guid: af4f6bb5908db284ab8f8e30c8a721f1, type: 3}
+  m_PrefabInstance: {fileID: 1897999745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1751670616
 GameObject:
   m_ObjectHideFlags: 0
@@ -5781,6 +5786,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 398454217733187802, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
+      propertyPath: appleTower
+      value: 
+      objectReference: {fileID: 242636108533580155, guid: 2816f7e7caf113c49913cf4a1446c7e3, type: 3}
+    - target: {fileID: 398454217733187802, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
+      propertyPath: melonTower
+      value: 
+      objectReference: {fileID: 1706312051}
+    - target: {fileID: 398454217733187802, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: standardTurretPrefab
       value: 
       objectReference: {fileID: 6240859788991596518, guid: af4f6bb5908db284ab8f8e30c8a721f1, type: 3}
@@ -6702,6 +6715,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 8396874525942186560}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: PurchaseMelonTower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!222 &8111463679193697899
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6753,6 +6778,7 @@ GameObject:
   - component: {fileID: 4158309016866170163}
   - component: {fileID: 8111463679193697899}
   - component: {fileID: 2625812662401306421}
+  - component: {fileID: 8396874525942186560}
   m_Layer: 5
   m_Name: TowerSelectContainer
   m_TagString: Untagged
@@ -6760,6 +6786,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8396874525942186560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396874525942186559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938aa45aca6cd13478650122defc7428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8643758001472089166
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6955,6 +6993,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8396874525942186560}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: PurchaseAppleTower
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
