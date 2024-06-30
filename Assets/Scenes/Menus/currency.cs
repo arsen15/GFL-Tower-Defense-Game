@@ -22,6 +22,10 @@ public class currency : MonoBehaviour
             PlayerStats.Money ++;
             textMesh.text = "$" + PlayerStats.Money.ToString() ;
         }
+        if (timer >= 0f)
+        {
+            textMesh.text = "$" + PlayerStats.Money.ToString() ;
+        }
     }
 
 }
