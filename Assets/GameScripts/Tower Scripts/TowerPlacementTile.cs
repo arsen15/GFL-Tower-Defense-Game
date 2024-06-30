@@ -14,14 +14,22 @@ public class TowerPlacementTile : MonoBehaviour
 
     private GameObject turret;
 
+    TowerBuildManager buildManager;
+
     private void Start()
     {
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
+        buildManager = TowerBuildManager.instance;
     }
 
     private void OnMouseDown()
     {
+        if (buildManager.GetTowerToBuild() == null)
+        {
+            return;
+        }
+
         if (turret != null)
         {
             Debug.Log("Can't Build there!");
@@ -29,9 +37,7 @@ public class TowerPlacementTile : MonoBehaviour
         }
 
         //Build turret
-        
-        
-        GameObject turretToBuild = TowerBuildManager.instance.GetTurretToBuild();
+        GameObject turretToBuild = buildManager.GetTowerToBuild();
  
         int towerCost = TowerBuildManager.instance.GetTurretCost(turretToBuild);
 
@@ -46,6 +52,11 @@ public class TowerPlacementTile : MonoBehaviour
     }
     private void OnMouseEnter()
     {
+        if (buildManager.GetTowerToBuild() == null)
+        {
+            return;
+        }
+
         rend.material.color = hoverColor;
     }
 
