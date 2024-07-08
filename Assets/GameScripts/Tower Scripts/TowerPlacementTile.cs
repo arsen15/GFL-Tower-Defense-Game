@@ -25,30 +25,33 @@ public class TowerPlacementTile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (buildManager.GetTowerToBuild() == null)
+        // If there is tower to build, build it
+        if (buildManager.GetTowerToBuild() != null && turret == null)
         {
+            
+
+            //Build turret
+            GameObject turretToBuild = buildManager.GetTowerToBuild();
+ 
+            int towerCost = TowerBuildManager.instance.GetTurretCost(turretToBuild);
+
+            if (PlayerStats.Money < towerCost)
+            {
+                Debug.Log("Need more money!");
+                return;
+            }
+            PlayerStats.Money -= towerCost;
+            turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
+            
             return;
         }
 
+        // If there is no tower to build, select this node if it already has a tower
         if (turret != null)
         {
-            Debug.Log("Can't Build there!");
-            return;
+            buildManager.SelectNode(this);
         }
-
-        //Build turret
-        GameObject turretToBuild = buildManager.GetTowerToBuild();
- 
-        int towerCost = TowerBuildManager.instance.GetTurretCost(turretToBuild);
-
-        if (PlayerStats.Money < towerCost)
-        {
-            Debug.Log("Need more money!");
-            return;
-        }
-        PlayerStats.Money -= towerCost;
-        turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
-
+        
     }
     private void OnMouseEnter()
     {
