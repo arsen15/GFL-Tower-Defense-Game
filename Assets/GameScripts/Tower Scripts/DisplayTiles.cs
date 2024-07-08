@@ -12,7 +12,7 @@ public class DisplayTiles : MonoBehaviour
 
     private void OnMouseDown()
     {
-        tiles.SetActive(false);
+        tiles.SetActive(true);
     }
 
 }

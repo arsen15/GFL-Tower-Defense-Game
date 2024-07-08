@@ -12,7 +12,7 @@ public class Shop : MonoBehaviour
     }
     public void PurchaseMelonTower()
     {
-        Debug.Log("Bought Melong tower");
+        Debug.Log("Bought Melon tower");
         buildManager.SetTowerToBuild(buildManager.melonTower);
     }
 

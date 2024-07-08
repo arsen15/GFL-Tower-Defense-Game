@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class TowerBuildManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class TowerBuildManager : MonoBehaviour
     public static TowerBuildManager instance;
 
     private GameObject turretToBuild;
+    private TowerPlacementTile selectedNode;
 
     public GameObject melonTower;
     public GameObject appleTower;
@@ -15,6 +17,8 @@ public class TowerBuildManager : MonoBehaviour
 
     private Dictionary<GameObject, int> turretCosts = new Dictionary<GameObject, int>();
 
+
+    public TowerTileUI towerTileUI;
     // Singleton pattern cont.
     private void Awake()
     {
@@ -35,9 +39,32 @@ public class TowerBuildManager : MonoBehaviour
         return turretToBuild;
     }
 
+    public void SelectNode(TowerPlacementTile node)
+    {
+
+        if (selectedNode == node)
+        {
+            DeselectNode();
+            return;
+        }
+
+        selectedNode = node;
+        turretToBuild = null;
+
+        towerTileUI.SetTarget(node);
+    }
+
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        towerTileUI.Hide();
+    }
+
     public void SetTowerToBuild(GameObject tower)
     {
         turretToBuild = tower;
+        
+        DeselectNode();
     }
 
     public int GetTurretCost(GameObject turretPrefab)
