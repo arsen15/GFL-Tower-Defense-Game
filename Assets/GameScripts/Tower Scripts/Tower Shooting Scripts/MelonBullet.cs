@@ -44,7 +44,7 @@ public class MelonBullet : MonoBehaviour
 
     void HitTarget()
     {
-        Debug.Log("We hit something");
+        
 
         // Get the Enemy component from target
         Enemy e = target.GetComponent<Enemy>();
