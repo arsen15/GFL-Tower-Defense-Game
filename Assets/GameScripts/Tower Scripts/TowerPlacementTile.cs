@@ -12,7 +12,11 @@ public class TowerPlacementTile : MonoBehaviour
 
     private Renderer rend;
 
+    [HideInInspector]
     private GameObject turret;
+
+    [HideInInspector]
+    public TowerBlueprint towerBlueprint;
 
     TowerBuildManager buildManager;
 
@@ -26,24 +30,12 @@ public class TowerPlacementTile : MonoBehaviour
     private void OnMouseDown()
     {
         // If there is tower to build, build it
-        if (buildManager.GetTowerToBuild() != null && turret == null)
+        if (buildManager.CanBuild && turret == null)
         {
             
-
-            //Build turret
-            GameObject turretToBuild = buildManager.GetTowerToBuild();
- 
-            int towerCost = TowerBuildManager.instance.GetTurretCost(turretToBuild);
-
-            if (PlayerStats.Money < towerCost)
-            {
-                Debug.Log("Need more money!");
-                return;
-            }
-            PlayerStats.Money -= towerCost;
-            turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
-            
+            BuildTower(buildManager.GetTowerToBuild());
             return;
+            
         }
 
         // If there is no tower to build, select this node if it already has a tower
@@ -51,11 +43,28 @@ public class TowerPlacementTile : MonoBehaviour
         {
             buildManager.SelectNode(this);
         }
+
+    }
+
+    void BuildTower(TowerBlueprint blueprint)
+    {
         
+        //int towerCost = TowerBuildManager.instance.GetTurretCost(turretToBuild);
+
+        if (PlayerStats.Money < blueprint.cost)
+        {
+            Debug.Log("Need more money!");
+            return;
+        }
+        PlayerStats.Money -= blueprint.cost;
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation);
+        turret = _turret;
+        towerBlueprint = blueprint;
+
     }
     private void OnMouseEnter()
     {
-        if (buildManager.GetTowerToBuild() == null)
+        if (!buildManager.CanBuild)
         {
             return;
         }
