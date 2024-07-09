@@ -8,7 +8,7 @@ public class TowerBuildManager : MonoBehaviour
     // Singleton pattern
     public static TowerBuildManager instance;
 
-    private GameObject turretToBuild;
+    private TowerBlueprint turretToBuild;
     private TowerPlacementTile selectedNode;
 
     public GameObject melonTower;
@@ -19,6 +19,8 @@ public class TowerBuildManager : MonoBehaviour
 
 
     public TowerTileUI towerTileUI;
+
+    public bool CanBuild { get { return turretToBuild != null; } }
     // Singleton pattern cont.
     private void Awake()
     {
@@ -32,12 +34,6 @@ public class TowerBuildManager : MonoBehaviour
         turretCosts.Add(melonTower, 3);
     }
 
-    
-
-    public GameObject GetTowerToBuild()
-    {
-        return turretToBuild;
-    }
 
     public void SelectNode(TowerPlacementTile node)
     {
@@ -60,11 +56,16 @@ public class TowerBuildManager : MonoBehaviour
         towerTileUI.Hide();
     }
 
-    public void SetTowerToBuild(GameObject tower)
+    public void SetTowerToBuild(TowerBlueprint tower)
     {
         turretToBuild = tower;
         
         DeselectNode();
+    }
+
+    public TowerBlueprint GetTowerToBuild()
+    {
+        return turretToBuild;
     }
 
     public int GetTurretCost(GameObject turretPrefab)

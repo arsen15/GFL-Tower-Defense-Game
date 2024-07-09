@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_LocalRotation.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -64,10 +64,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: f179f33ef3b926344b94220cdf247948, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4425ff5477a2d3441b5e81fa557916ba, type: 2}
     - target: {fileID: -7029948723529949830, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: f179f33ef3b926344b94220cdf247948, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f3c43a0b11195404d9ff0c29100555d9, type: 2}
+    - target: {fileID: -2964225117148605397, guid: f179f33ef3b926344b94220cdf247948, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f1f5139f3ceb58488a66afc5a6c0c04, type: 2}
     - target: {fileID: 919132149155446097, guid: f179f33ef3b926344b94220cdf247948, type: 3}
       propertyPath: m_Name
       value: Worm Soldier
