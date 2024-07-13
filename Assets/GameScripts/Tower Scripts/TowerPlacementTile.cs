@@ -88,6 +88,18 @@ public class TowerPlacementTile : MonoBehaviour
 
         Debug.Log("Tower Upgraded");
     }
+
+    public void SellTower()
+    {
+        PlayerStats.Money += towerBlueprint.GetSellAmount();
+
+        // Spawn Sell effect
+        GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
+
+        Destroy(tower);
+        towerBlueprint = null;
+    }
     private void OnMouseEnter()
     {
         if (!buildManager.CanBuild)

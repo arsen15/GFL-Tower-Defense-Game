@@ -320,7 +320,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 45084784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 171282559}
+        m_TargetAssemblyTypeName: TowerTileUI, Assembly-CSharp
+        m_MethodName: Sell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &45084784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 256503096}
   upgradeCost: {fileID: 1689351426}
+  sellAmount: {fileID: 1063813557}
   upgradeButton: {fileID: 1881919435}
 --- !u!4 &178245082 stripped
 Transform:
@@ -3030,7 +3043,7 @@ GameObject:
   - component: {fileID: 1063813558}
   - component: {fileID: 1063813557}
   m_Layer: 0
-  m_Name: Cost
+  m_Name: SellAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6956,6 +6969,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6240859788991596518, guid: af4f6bb5908db284ab8f8e30c8a721f1, type: 3}
     - target: {fileID: 398454217733187802, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
+      propertyPath: sellEffect
+      value: 
+      objectReference: {fileID: 5084003529865168347, guid: 55fe052e98ee4d84fbdb5fd87a9a4592, type: 3}
+    - target: {fileID: 398454217733187802, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: towerTileUI
       value: 
       objectReference: {fileID: 171282559}
@@ -7989,7 +8006,7 @@ MonoBehaviour:
   appleTower:
     prefab: {fileID: 242636108533580155, guid: 2816f7e7caf113c49913cf4a1446c7e3, type: 3}
     cost: 3
-    upgradedPrefab: {fileID: 463313260854046854, guid: 065fc89c82327a2438340f47e270c001, type: 3}
+    upgradedPrefab: {fileID: 7998390742475825801, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
     upgradeCost: 5
   melonTower:
     prefab: {fileID: 6240859788991596518, guid: af4f6bb5908db284ab8f8e30c8a721f1, type: 3}
