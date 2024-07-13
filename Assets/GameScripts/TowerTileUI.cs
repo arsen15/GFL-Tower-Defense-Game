@@ -9,6 +9,7 @@ public class TowerTileUI : MonoBehaviour
     private TowerPlacementTile target;
 
     public TextMeshProUGUI upgradeCost;
+    public TextMeshProUGUI sellAmount;
 
     public Button upgradeButton;
 
@@ -18,6 +19,7 @@ public class TowerTileUI : MonoBehaviour
 
         transform.position = target.transform.position;
 
+        // Updates the text UI for upgrade cost
         if (!target.isUpgraded)
         {
             upgradeCost.text = "$" + target.towerBlueprint.upgradeCost;
@@ -28,6 +30,8 @@ public class TowerTileUI : MonoBehaviour
             upgradeButton.interactable = false;
         }
 
+        // Updates the text UI for sell amount
+        sellAmount.text = "$" + target.towerBlueprint.GetSellAmount();
         
 
         ui.SetActive(true);
@@ -42,6 +46,12 @@ public class TowerTileUI : MonoBehaviour
     public void Upgrade()
     {
         target.UpgradeTower();
+        TowerBuildManager.instance.DeselectNode();
+    }
+
+    public void Sell()
+    {
+        target.SellTower();
         TowerBuildManager.instance.DeselectNode();
     }
 }
