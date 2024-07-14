@@ -20,6 +20,8 @@ public class TowerBuildManager : MonoBehaviour
 
     public TowerTileUI towerTileUI;
 
+    public GameObject sellEffect;
+
     public bool CanBuild { get { return turretToBuild != null; } }
     // Singleton pattern cont.
     private void Awake()
