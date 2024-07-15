@@ -15,13 +15,13 @@ public class Shop : MonoBehaviour
     }
     public void PurchaseMelonTower()
     {
-        Debug.Log("Bought Melon tower");
+        
         buildManager.SetTowerToBuild(melonTower);
     }
 
     public void PurchaseAppleTower()
     {
-        Debug.Log("Bought Apple tower");
+        
         buildManager.SetTowerToBuild(appleTower);
     }
 }
