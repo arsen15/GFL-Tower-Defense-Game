@@ -28,9 +28,12 @@ public class GameLoopManager : MonoBehaviour
 
     //private bool isInitialWait = true;
 
-    public bool LoopShouldEnd;
+    public bool GameIsOver;
 
     public TextMeshProUGUI waveNumber;
+
+    public GameObject VictoryUI;
+    public GameObject DefeatUI;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +56,7 @@ public class GameLoopManager : MonoBehaviour
         //InvokeRepeating("SpawnTest", 0f, 1f);
     }
 
+
     private void UpdateWaveNumberText()
     {
         waveNumber.text = $"{currentWaveIndex + 0} / {waves.Length}";
@@ -60,7 +64,7 @@ public class GameLoopManager : MonoBehaviour
 
     IEnumerator GameLoop()
     {
-        while (!LoopShouldEnd)
+        while (!GameIsOver)
         {
             if (!isSpawningWave)
             {
@@ -77,8 +81,9 @@ public class GameLoopManager : MonoBehaviour
                     else
                     {
                         // No more waves, handle end of game logic here
-                        LoopShouldEnd = true;
+                        CheckForVictory();
                         Debug.Log("Waves Ended!");
+
                     }
                 }
                 else
@@ -91,60 +96,129 @@ public class GameLoopManager : MonoBehaviour
         }
     }
 
+    void Defeat()
+    {
+        GameIsOver = true;
+        DefeatUI.SetActive(true);
+        Debug.Log("Game Over: Defeat!");
+
+        if (DefeatUI.activeSelf)
+        {
+            Debug.Log("DefeatUI is now active.");
+        }
+        else
+        {
+            Debug.LogError("DefeatUI is not active!");
+        }
+
+        Time.timeScale = 0f;
+        
+    }
+
+    void Victory()
+    {
+        GameIsOver = true;
+        Debug.Log("Game Over: Victory!");
+        VictoryUI.SetActive(true);
+        if (VictoryUI.activeSelf)
+        {
+            Debug.Log("VictoryUI is now active.");
+        }
+        else
+        {
+            Debug.LogError("VictoryUI is not active!");
+        }
+        Time.timeScale = 0f;
+    }
+
+    public void CheckForVictory()
+        // When all waves are over AND all enemies are DEAD
+    {// currentWaveIndex == waves.Length && EntitySpawner.EnemiesInGame.Count == 0
+        if (currentWaveIndex == waves.Length && EntitySpawner.EnemiesInGame.Count == 0)
+        {
+            Debug.Log("Conditions for victory are met!");
+            Victory();
+        }
+    }
+
+    // Move enemies Coroutine
     IEnumerator MoveEnemies()
     {
         while (true)
         {
+            if (GameIsOver) yield break;
+
             if (EntitySpawner.EnemiesInGame.Count > 0)
             {
+                
                 // Move Enemies
                 NativeArray<Vector3> NodesToUse = new NativeArray<Vector3>(NodePositions, Allocator.TempJob);
                 NativeArray<int> NodeIndices = new NativeArray<int>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
                 NativeArray<float> EnemySpeeds = new NativeArray<float>(EntitySpawner.EnemiesInGame.Count, Allocator.TempJob);
                 TransformAccessArray EnemyAccess = new TransformAccessArray(EntitySpawner.EnemiesInGameTransform.ToArray(), 2);
 
-                for (int i = 0; i < EntitySpawner.EnemiesInGame.Count; i++)
+                try
                 {
-                    EnemySpeeds[i] = EntitySpawner.EnemiesInGame[i].Speed;
-                    NodeIndices[i] = EntitySpawner.EnemiesInGame[i].NodeIndex;
-                }
-
-                MoveEnemiesJob MoveJob = new MoveEnemiesJob
-                {
-                    NodePositions = NodesToUse,
-                    EnemySpeeds = EnemySpeeds,
-                    NodeIndex = NodeIndices,
-                    deltaTime = Time.deltaTime
-                };
-
-                JobHandle MoveEnemyJobHandle = MoveJob.Schedule(EnemyAccess);
-                MoveEnemyJobHandle.Complete();
-
-                for (int i = 0; i < EntitySpawner.EnemiesInGame.Count; i++)
-                {
-                    EntitySpawner.EnemiesInGame[i].NodeIndex = NodeIndices[i];
-
-                    if (EntitySpawner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
+                    for (int i = 0; i < EntitySpawner.EnemiesInGame.Count; i++)
                     {
-                        //Damaging the player when enemy reaches end of path
-                        PlayerStats.Lives--;
-                        EnqueueEnemyToRemove(EntitySpawner.EnemiesInGame[i]);
+                        EnemySpeeds[i] = EntitySpawner.EnemiesInGame[i].Speed;
+                        NodeIndices[i] = EntitySpawner.EnemiesInGame[i].NodeIndex;
+                    }
+
+                    MoveEnemiesJob MoveJob = new MoveEnemiesJob
+                    {
+                        NodePositions = NodesToUse,
+                        EnemySpeeds = EnemySpeeds,
+                        NodeIndex = NodeIndices,
+                        deltaTime = Time.deltaTime
+                    };
+
+                    JobHandle MoveEnemyJobHandle = MoveJob.Schedule(EnemyAccess);
+                    MoveEnemyJobHandle.Complete();
+
+                    for (int i = 0; i < EntitySpawner.EnemiesInGame.Count; i++)
+                    {
+                        EntitySpawner.EnemiesInGame[i].NodeIndex = NodeIndices[i];
+
+                        if (EntitySpawner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
+                        {
+                            //Damaging the player when enemy reaches end of path
+                            PlayerStats.Lives--;
+                            EnqueueEnemyToRemove(EntitySpawner.EnemiesInGame[i]);
+
+                            if (PlayerStats.Lives <= 0)
+                            {
+                                Defeat();
+                                yield break;
+                            }
+                        }
                     }
                 }
+                finally
+                {
 
-                NodesToUse.Dispose();
-                NodeIndices.Dispose();
-                EnemySpeeds.Dispose();
-                EnemyAccess.Dispose();
+                    NodesToUse.Dispose();
+                    NodeIndices.Dispose();
+                    EnemySpeeds.Dispose();
+                    EnemyAccess.Dispose();
+                }
 
                 // Remove Enemies
                 if (enemiesToRemoveQueue.Count > 0)
                 {
-                    for (int i = 0; i < enemiesToRemoveQueue.Count; i++)
+                    //for (int i = 0; i < enemiesToRemoveQueue.Count; i++)
+                    while(enemiesToRemoveQueue.Count > 0)
                     {
                         EntitySpawner.RemoveEnemy(enemiesToRemoveQueue.Dequeue());
+                        
                     }
+
+                    CheckForVictory();
                 }
+            }
+            else
+            {
+                CheckForVictory() ;
             }
             yield return null;
         }
@@ -161,6 +235,9 @@ public class GameLoopManager : MonoBehaviour
         }
 
         isSpawningWave = false;
+
+        // Immediately check for victory after spawning the last wave
+        CheckForVictory();
     }
 
     public static void EnqueueIDToSpawn(int ID)

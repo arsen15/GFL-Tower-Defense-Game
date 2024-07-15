@@ -79,6 +79,5 @@ public class EntitySpawner : MonoBehaviour
         EnemyToRemove.gameObject.SetActive(false);
         EnemiesInGame.Remove(EnemyToRemove);
         EnemiesInGameTransform.Remove(EnemyToRemove.transform);
-
     }
 }
