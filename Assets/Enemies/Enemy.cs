@@ -19,7 +19,8 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         PlayerStats.Money += coins;
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        EntitySpawner.RemoveEnemy(this); // Remove enemy from the game
     }
 
     public void TakeDamage (float amount)
