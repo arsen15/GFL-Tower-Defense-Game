@@ -31,6 +31,7 @@ public class GameLoopManager : MonoBehaviour
     public bool GameIsOver;
 
     public TextMeshProUGUI waveNumber;
+    public TextMeshProUGUI timerText;
 
     public GameObject VictoryUI;
     public GameObject DefeatUI;
@@ -51,15 +52,26 @@ public class GameLoopManager : MonoBehaviour
 
         waveCountdown = initialWaitTime;
         UpdateWaveNumberText();
+        UpdateTimerText();
         StartCoroutine(GameLoop());
         StartCoroutine(MoveEnemies());
         //InvokeRepeating("SpawnTest", 0f, 1f);
+    }
+
+    private void Update()
+    {
+        UpdateTimerText();
     }
 
 
     private void UpdateWaveNumberText()
     {
         waveNumber.text = $"{currentWaveIndex + 0} / {waves.Length}";
+    }
+
+    private void UpdateTimerText()
+    {
+        timerText.text = $"{(int)waveCountdown + 0}";
     }
 
     IEnumerator GameLoop()
@@ -72,11 +84,14 @@ public class GameLoopManager : MonoBehaviour
                 {
                     if (currentWaveIndex < waves.Length)
                     {
+                        
                         StartCoroutine(SpawnWave(waves[currentWaveIndex]));
+                        PlayerStats.Rounds++;
                         currentWaveIndex++;
                         waveCountdown = timeBetweenWaves;
                         //isInitialWait = false;
                         UpdateWaveNumberText();
+                        UpdateTimerText() ;
                     }
                     else
                     {
