@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4499231739495092333}
   - component: {fileID: 4510858288406018195}
   - component: {fileID: 398454217733187802}
-  - component: {fileID: 836150498384838194}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -54,8 +53,11 @@ MonoBehaviour:
     spawnRate: 3
   initialWaitTime: 0
   timeBetweenWaves: 5
-  LoopShouldEnd: 0
+  GameIsOver: 0
   waveNumber: {fileID: 0}
+  timerText: {fileID: 0}
+  VictoryUI: {fileID: 0}
+  DefeatUI: {fileID: 0}
 --- !u!114 &4510858288406018195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,16 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a4604147de73a42ad20a82a0556a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardTurretPrefab: {fileID: 8782154436374362226, guid: af4f6bb5908db284ab8f8e30c8a721f1, type: 3}
---- !u!114 &836150498384838194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3490029339510254706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1937facc556079b4d8e929b47332f1b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  melonTower: {fileID: 0}
+  appleTower: {fileID: 0}
+  towerTileUI: {fileID: 0}
+  sellEffect: {fileID: 0}
