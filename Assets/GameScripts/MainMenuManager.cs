@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // Update is called once per frame
+    
     public void Play()
     {
-        //SceneManager.LoadScene("Tower Placement Scene (With UI)");
+        Time.timeScale = 1f;
+
+        EntitySpawner.ResetInitialization();
+
         Debug.Log("Pressed Play");
         SceneManager.LoadScene("Scenes/Level 1");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -8,6 +8,10 @@ public class DefeatScreen : MonoBehaviour
     public GameObject defeatScreen;
     public void Retry()
     {
+        Time.timeScale = 1f;
+
+        EntitySpawner.ResetInitialization();
+        // Reload the currently active scene based on index
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
