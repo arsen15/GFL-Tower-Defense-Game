@@ -55,7 +55,10 @@ public class GameLoopManager : MonoBehaviour
         UpdateTimerText();
         StartCoroutine(GameLoop());
         StartCoroutine(MoveEnemies());
-        //InvokeRepeating("SpawnTest", 0f, 1f);
+
+        VictoryUI.SetActive(false);
+        DefeatUI.SetActive(false);
+        GameIsOver = false;
     }
 
     private void Update()

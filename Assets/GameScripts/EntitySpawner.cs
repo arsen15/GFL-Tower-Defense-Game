@@ -39,6 +39,11 @@ public class EntitySpawner : MonoBehaviour
         }
     }
 
+    public static void ResetInitialization()
+    {
+        IsInitialized = false;
+    }
+
     public static Enemy SpawnEnemy(int EnemyID)
     {
         Enemy SpawnedEnemy = null;

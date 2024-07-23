@@ -6544,7 +6544,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Defeat Screen
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8512184623630137285, guid: a5825662f9e68d44da7d98e5bef36783, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
