@@ -2119,6 +2119,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3838279205390018259, guid: c6e1acfabd66d7b44b34098d14e5f91a, type: 3}
   m_PrefabInstance: {fileID: 1377256260}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &778659939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4367433435650585199, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 9208509072896386805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &778659941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8613744222670393803, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 9208509072896386805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778659939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &778659942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4945114260481420067, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 9208509072896386805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778659939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &778659944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778659939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dc3e2309e6d47459110275fe212f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerButton: {fileID: 778659941}
+  towerImage: {fileID: 778659942}
+  selectedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!4 &805947753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3838279205390018259, guid: c6e1acfabd66d7b44b34098d14e5f91a, type: 3}
@@ -3607,6 +3649,7 @@ MonoBehaviour:
   initialWaitTime: 0
   timeBetweenWaves: 5
   LoopShouldEnd: 0
+  waveNumber: {fileID: 0}
 --- !u!4 &1463384118
 Transform:
   m_ObjectHideFlags: 0
@@ -5401,7 +5444,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4367433435650585199, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 778659944}
   m_SourcePrefab: {fileID: 100100000, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
