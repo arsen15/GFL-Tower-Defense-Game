@@ -7166,8 +7166,98 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6703380857997303813, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1024057513323990129}
+    - targetCorrespondingSourceObject: {fileID: 5882860646632817610, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1024057513323990128}
   m_SourcePrefab: {fileID: 100100000, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+--- !u!1 &1024057513323990122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5882860646632817610, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 1024057513323990121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1024057513323990123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8649116385818900096, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 1024057513323990121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024057513323990122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1024057513323990124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 483371494157733053, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 1024057513323990121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024057513323990122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1024057513323990125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6703380857997303813, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 1024057513323990121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1024057513323990126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8945292213794519612, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 1024057513323990121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024057513323990125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1024057513323990127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5964269475060067360, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+  m_PrefabInstance: {fileID: 1024057513323990121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024057513323990125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1024057513323990128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024057513323990122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09b71721e79b2348b625093cc915894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerButton: {fileID: 1024057513323990123}
+  towerImage: {fileID: 1024057513323990124}
+  selectedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &1024057513323990129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024057513323990125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09b71721e79b2348b625093cc915894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerButton: {fileID: 1024057513323990126}
+  towerImage: {fileID: 1024057513323990127}
+  selectedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!4 &2016987143180492756
 Transform:
   m_ObjectHideFlags: 0
