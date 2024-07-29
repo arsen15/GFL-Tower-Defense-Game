@@ -134,6 +134,7 @@ MonoBehaviour:
   rotationSpeed: 10
   bulletPrefab: {fileID: 5969918712300872122, guid: 882eb8ef81acff0488ec22875f27fdb0, type: 3}
   firePoint: {fileID: 8820858256331404157}
+  shootingSound: {fileID: 8300000, guid: 354df05055d4b75479e2ff7f615b7b96, type: 3}
 --- !u!1 &704432784927796058
 GameObject:
   m_ObjectHideFlags: 0

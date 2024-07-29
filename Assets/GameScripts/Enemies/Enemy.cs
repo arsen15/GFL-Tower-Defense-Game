@@ -9,6 +9,13 @@ public class Enemy : MonoBehaviour
     public float Health;
     public float Speed;
     public int ID;
+
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
     public void Init()
     {
         Health = maxHealth;
@@ -19,6 +26,8 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         PlayerStats.Money += coins;
+
+        audioManager.PlaySFX(audioManager.bugExplosion);
         //Destroy(gameObject);
         EntitySpawner.RemoveEnemy(this); // Remove enemy from the game
     }
