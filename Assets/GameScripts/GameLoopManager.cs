@@ -36,9 +36,12 @@ public class GameLoopManager : MonoBehaviour
     public GameObject VictoryUI;
     public GameObject DefeatUI;
 
+    private AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         EnemyIDToSpawn = new Queue<int>();
         enemiesToRemoveQueue = new Queue<Enemy>();
         EntitySpawner.Init();
@@ -87,7 +90,8 @@ public class GameLoopManager : MonoBehaviour
                 {
                     if (currentWaveIndex < waves.Length)
                     {
-                        
+                        audioManager.PlaySFX(audioManager.waveStart);
+
                         StartCoroutine(SpawnWave(waves[currentWaveIndex]));
                         PlayerStats.Rounds++;
                         currentWaveIndex++;
@@ -120,6 +124,12 @@ public class GameLoopManager : MonoBehaviour
         DefeatUI.SetActive(true);
         Debug.Log("Game Over: Defeat!");
 
+        audioManager.StopMusic();
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.levelFail);
+        }
+
         if (DefeatUI.activeSelf)
         {
             Debug.Log("DefeatUI is now active.");
@@ -138,6 +148,13 @@ public class GameLoopManager : MonoBehaviour
         GameIsOver = true;
         Debug.Log("Game Over: Victory!");
         VictoryUI.SetActive(true);
+
+        audioManager.StopMusic();
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.levelComplete);
+        }
+
         if (VictoryUI.activeSelf)
         {
             Debug.Log("VictoryUI is now active.");
