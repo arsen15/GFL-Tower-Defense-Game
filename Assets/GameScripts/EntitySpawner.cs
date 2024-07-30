@@ -66,6 +66,7 @@ public class EntitySpawner : MonoBehaviour
                 SpawnedEnemy = NewEnemy.GetComponent<Enemy>();
                 SpawnedEnemy.Init();
             }
+            SpawnedEnemy.Init();
         } else
         {
             Debug.Log($"Enemy ID of {EnemyID} does not exist");

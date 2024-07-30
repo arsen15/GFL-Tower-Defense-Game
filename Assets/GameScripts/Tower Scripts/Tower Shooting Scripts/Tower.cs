@@ -18,9 +18,13 @@ public class Tower : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    private AudioManager audioManager;
+    public AudioClip shootingSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -81,6 +85,8 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
+        audioManager.PlaySFX(shootingSound);
+
         GameObject currentBullet = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         MelonBullet melonBullet = currentBullet.GetComponent<MelonBullet>(); 
 

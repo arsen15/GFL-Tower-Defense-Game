@@ -23,10 +23,12 @@ public class TowerPlacementTile : MonoBehaviour
 
     TowerBuildManager buildManager;
 
-    
+    private AudioManager audioManager;
 
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
         buildManager = TowerBuildManager.instance;
@@ -61,6 +63,8 @@ public class TowerPlacementTile : MonoBehaviour
             Debug.Log("Need more money!");
             return;
         }
+        audioManager.PlaySFX(audioManager.placingTower);
+
         PlayerStats.Money -= blueprint.cost;
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation);
         tower = _turret;
