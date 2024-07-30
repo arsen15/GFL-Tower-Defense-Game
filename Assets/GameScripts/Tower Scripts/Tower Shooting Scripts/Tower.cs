@@ -67,9 +67,6 @@ public class Tower : MonoBehaviour
             return;
         }
 
-        // Debug log to check the position and rotation
-        Debug.Log($"partToRotate Position: {partToRotate.position}, Rotation: {partToRotate.rotation}");
-
         // Tower Target Lock on
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
