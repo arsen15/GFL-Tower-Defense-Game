@@ -8,6 +8,7 @@ public class MelonBullet : MonoBehaviour
     private Transform target;
 
     public float speed = 70f;
+    public float explosionRadius = 0f; // default radius to zero
     public int damage = 10;
 
     public GameObject bulletImpactEffect;
@@ -45,16 +46,52 @@ public class MelonBullet : MonoBehaviour
     void HitTarget()
     {
         
-
         // Get the Enemy component from target
-        Enemy e = target.GetComponent<Enemy>();
-        if (e != null)
-        {
-            e.TakeDamage(damage);
-        }
+        //Enemy e = target.GetComponent<Enemy>();
+        //if (e != null)
+        //{
+        //    e.TakeDamage(damage);
+        //}
         // Instantiate impact effect
         GameObject effectInstance = (GameObject)Instantiate(bulletImpactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 2f);
+
+        if (explosionRadius > 0f) // damage enemies in surrounding space
+        {
+            Explode();
+        }
+        else // damage single enemy
+        {
+            Damage(target);
+        }
+
         Destroy(gameObject);
     }
+
+    void Explode ()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius); // checks for all colliders hit by sphere of bullet and creates array of them
+        foreach (Collider collider in colliders)
+        {
+            Enemy e = collider.GetComponent<Enemy>();
+            
+            if (e != null)// loop through list and isolate all enemies
+            {
+                Damage(collider.transform);
+            }
+        }
+    }
+
+    void Damage (Transform enemy)
+    {
+        Destroy(enemy.gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
+
 }
