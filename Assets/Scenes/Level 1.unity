@@ -384,8 +384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b543766213dc23a4eb28548d120c4b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLives: 1
-  startMoney: 5
+  startLives: 10
+  startMoney: 50
 --- !u!4 &157348318
 Transform:
   m_ObjectHideFlags: 0
@@ -4279,63 +4279,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fdd7d4e2e22eb1942a32b44b9a313da6, type: 3}
   m_PrefabInstance: {fileID: 859456410}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1602590692
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 23.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.70009625
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 8.966971e-18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7140485
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.00000008512121
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 91.131
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877712490114320619, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7998390742475825801, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
-      propertyPath: m_Name
-      value: apple_cannon1_upgraded
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
 --- !u!4 &1609242161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 39172bb3778866e4da4a5ab302dd1759, type: 3}
@@ -6260,6 +6203,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: appleTower.upgradedPrefab
+      value: 
+      objectReference: {fileID: 8509505145204973621, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
+    - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: melonTower.upgradedPrefab
+      value: 
+      objectReference: {fileID: 5596566627515038679, guid: 7ab1750d3ae9d504e933e8be9105c353, type: 3}
     - target: {fileID: 7575585582128587793, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -6850,4 +6801,3 @@ SceneRoots:
   - {fileID: 1236201738}
   - {fileID: 669831542}
   - {fileID: 2006504086}
-  - {fileID: 1602590692}

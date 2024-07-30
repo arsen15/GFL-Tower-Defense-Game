@@ -17,6 +17,7 @@ public class VictoryScreenController : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        EntitySpawner.ResetInitialization();
         SceneManager.LoadScene("Level 2");
     }
 
