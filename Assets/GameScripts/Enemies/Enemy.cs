@@ -25,10 +25,12 @@ public class Enemy : MonoBehaviour
     public int coins = 2;
     void Die()
     {
+        Debug.Log("Enemy died");
         PlayerStats.Money += coins;
 
         audioManager.PlaySFX(audioManager.bugExplosion);
         //Destroy(gameObject);
+        Debug.Log("Enemy removed from list");
         EntitySpawner.RemoveEnemy(this); // Remove enemy from the game
     }
 

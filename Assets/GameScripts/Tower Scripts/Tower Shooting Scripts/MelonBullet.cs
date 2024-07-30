@@ -12,7 +12,7 @@ public class MelonBullet : MonoBehaviour
     public int damage = 10;
 
     public GameObject bulletImpactEffect;
-
+    
     public void Seek(Transform _target)
     {
         target = _target;
@@ -84,7 +84,12 @@ public class MelonBullet : MonoBehaviour
 
     void Damage (Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        Enemy e = enemy.GetComponent<Enemy>();
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
+        //Destroy(enemy.gameObject);
     }
 
     private void OnDrawGizmosSelected()

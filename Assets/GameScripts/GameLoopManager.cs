@@ -106,7 +106,8 @@ public class GameLoopManager : MonoBehaviour
                         // No more waves, handle end of game logic here
                         CheckForVictory();
                         Debug.Log("Waves Ended!");
-
+                        Debug.Log("Current wave index: " + currentWaveIndex);
+                        Debug.Log("Enemies In Game List size: " + EntitySpawner.EnemiesInGame.Count);
                     }
                 }
                 else

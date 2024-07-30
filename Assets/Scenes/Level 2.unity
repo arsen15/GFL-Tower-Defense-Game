@@ -6558,6 +6558,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: appleTower.upgradedPrefab
+      value: 
+      objectReference: {fileID: 8509505145204973621, guid: 7c1d94d76ca928145929c918fbaa68d4, type: 3}
+    - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: melonTower.upgradedPrefab
+      value: 
+      objectReference: {fileID: 5596566627515038679, guid: 7ab1750d3ae9d504e933e8be9105c353, type: 3}
     - target: {fileID: 8649116385818900096, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 4
