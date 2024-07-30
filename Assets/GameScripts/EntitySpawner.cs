@@ -56,9 +56,13 @@ public class EntitySpawner : MonoBehaviour
             {
                 //Dequeue Enemy and initialize
                 SpawnedEnemy = ReferencedQueue.Dequeue();
-                SpawnedEnemy.Init();
 
-                SpawnedEnemy.gameObject.SetActive(true);
+                if (SpawnedEnemy != null)
+                {
+                    SpawnedEnemy.Init();
+                    SpawnedEnemy.gameObject.SetActive(true);
+                }
+                
             } else
             {
                 //Instantiate new instance of enemy and initialize
@@ -66,15 +70,18 @@ public class EntitySpawner : MonoBehaviour
                 SpawnedEnemy = NewEnemy.GetComponent<Enemy>();
                 SpawnedEnemy.Init();
             }
-            SpawnedEnemy.Init();
+            //SpawnedEnemy.Init();
         } else
         {
             Debug.Log($"Enemy ID of {EnemyID} does not exist");
         }
 
-        EnemiesInGameTransform.Add(SpawnedEnemy.transform);
-        EnemiesInGame.Add( SpawnedEnemy );
-        SpawnedEnemy.ID = EnemyID;
+        if (SpawnedEnemy != null)
+        {
+            EnemiesInGameTransform.Add(SpawnedEnemy.transform);
+            EnemiesInGame.Add(SpawnedEnemy);
+            SpawnedEnemy.ID = EnemyID;
+        }
 
         return SpawnedEnemy;
     }
