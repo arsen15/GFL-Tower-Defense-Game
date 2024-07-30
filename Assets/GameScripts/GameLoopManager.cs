@@ -41,6 +41,7 @@ public class GameLoopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         audioManager = FindObjectOfType<AudioManager>();
         EnemyIDToSpawn = new Queue<int>();
         enemiesToRemoveQueue = new Queue<Enemy>();
