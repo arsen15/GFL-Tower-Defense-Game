@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,6 +11,9 @@ public class Enemy : MonoBehaviour
 
     private AudioManager audioManager;
 
+    [Header("Unity Required")]
+    public Image healthBar;
+
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
@@ -21,22 +23,27 @@ public class Enemy : MonoBehaviour
         Health = maxHealth;
         transform.position = GameLoopManager.NodePositions[0];
         NodeIndex = 0;
+
+        // Reset the health bar to full
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = 1f;
+        }
     }
     public int coins = 2;
     void Die()
     {
-        Debug.Log("Enemy died");
         PlayerStats.Money += coins;
 
         audioManager.PlaySFX(audioManager.bugExplosion);
-        //Destroy(gameObject);
-        Debug.Log("Enemy removed from list");
         EntitySpawner.RemoveEnemy(this); // Remove enemy from the game
     }
 
     public void TakeDamage (float amount)
 	{
 		Health -= amount;
+
+        healthBar.fillAmount = Health / maxHealth;
 
 		if (Health <= 0)
 		{
