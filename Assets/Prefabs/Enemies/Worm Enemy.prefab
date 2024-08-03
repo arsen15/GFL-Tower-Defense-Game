@@ -316,9 +316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NodeIndex: 0
-  maxHealth: 100
+  maxHealth: 120
   Health: 0
-  Speed: 5
+  Speed: 1.9
   ID: 1
   healthBar: {fileID: 3814276078994740627}
   coins: 2

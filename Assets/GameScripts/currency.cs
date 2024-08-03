@@ -19,7 +19,7 @@ public class currency : MonoBehaviour
         if (timer >= seconds)
         {
             timer = 0f;
-            PlayerStats.Money ++;
+            PlayerStats.Money += 40;
             textMesh.text = "$" + PlayerStats.Money.ToString() ;
         }
         if (timer >= 0f)

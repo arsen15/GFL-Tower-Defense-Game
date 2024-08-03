@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75f21dea3a98214cba10ddd422a17ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 15
+  range: 7.7
   fireRate: 1
   partToRotate: {fileID: 5899157484860949960}
   rotationSpeed: 10

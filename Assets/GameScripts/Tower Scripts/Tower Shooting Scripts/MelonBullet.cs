@@ -9,7 +9,7 @@ public class MelonBullet : MonoBehaviour
 
     public float speed = 70f;
     public float explosionRadius = 0f; // default radius to zero
-    public int damage = 10;
+    public float damage = 10;
 
     public GameObject bulletImpactEffect;
     

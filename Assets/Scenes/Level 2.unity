@@ -493,8 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b543766213dc23a4eb28548d120c4b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLives: 1
-  startMoney: 5
+  startLives: 5
+  startMoney: 120
 --- !u!4 &157348318
 Transform:
   m_ObjectHideFlags: 0
@@ -2517,6 +2517,10 @@ PrefabInstance:
     - target: {fileID: 2537710366293346385, guid: 3fb6fa62497c5994ebe09fabc626fc31, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3827855101241631721, guid: 3fb6fa62497c5994ebe09fabc626fc31, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3827855101241631721, guid: 3fb6fa62497c5994ebe09fabc626fc31, type: 3}
       propertyPath: m_Volume
@@ -6474,6 +6478,47 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 309576319986840773, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_text
+      value: '$40
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 958429058490221075, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 958429058490221075, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198102052376257260, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_text
+      value: '$30
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117469704427002378, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -32.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117469704427002378, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -81.8502
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117469704427002378, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 17.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117469704427002378, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849030108631350620, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: seconds
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5109732763770714640, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6557,6 +6602,22 @@ PrefabInstance:
     - target: {fileID: 5290570015363764741, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
       propertyPath: m_Name
       value: Player UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: appleTower.cost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: melonTower.cost
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: appleTower.upgradeCost
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
+      propertyPath: melonTower.upgradeCost
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 6222516266433025215, guid: 0257b7a0f51ef034192c0e19fb57f93f, type: 3}
       propertyPath: appleTower.upgradedPrefab
@@ -6803,11 +6864,11 @@ PrefabInstance:
       objectReference: {fileID: 570891198126168280}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: initialWaitTime
-      value: 2
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: timeBetweenWaves
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.size
@@ -6835,23 +6896,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[0].spawnRate
-      value: 4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[1].spawnRate
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[2].spawnRate
-      value: 4
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[3].spawnRate
-      value: 4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[4].spawnRate
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[0].enemyCount
@@ -6863,15 +6924,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[2].enemyCount
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[3].enemyCount
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4499231739495092333, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: waves.Array.data[4].enemyCount
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5901611037535115294, guid: f1e4dfcb03b08cf478f748c1c190bef7, type: 3}
       propertyPath: m_LocalPosition.x
