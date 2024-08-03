@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
@@ -24,6 +25,8 @@ public class TowerPlacementTile : MonoBehaviour
     TowerBuildManager buildManager;
 
     private AudioManager audioManager;
+
+    public static event Action OnTowerPlaced;
 
     private void Start()
     {
@@ -69,7 +72,7 @@ public class TowerPlacementTile : MonoBehaviour
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation);
         tower = _turret;
         towerBlueprint = blueprint;
-
+        OnTowerPlaced?.Invoke();
     }
 
     public void UpgradeTower()
