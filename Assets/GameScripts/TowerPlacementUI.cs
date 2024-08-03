@@ -23,6 +23,13 @@ public class TowerPlacementUI : MonoBehaviour
         {
             towerButton.onClick.AddListener(OnTowerButtonClick);
         }
+
+        TowerPlacementTile.OnTowerPlaced += OnTowerPlaced;
+    }
+
+    private void OnDestroy()
+    {
+        TowerPlacementTile.OnTowerPlaced -= OnTowerPlaced;
     }
 
     private void OnTowerButtonClick()
@@ -42,7 +49,7 @@ public class TowerPlacementUI : MonoBehaviour
         isTowerSelected = true;
 
     
-        PlaceTower();
+        //PlaceTower();
     }
 
     private void PlaceTower()
