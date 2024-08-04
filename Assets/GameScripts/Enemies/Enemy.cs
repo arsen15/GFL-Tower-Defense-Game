@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
         transform.position = GameLoopManager.NodePositions[0];
         NodeIndex = 0;
 
+        gameObject.SetActive(true);
+
         // Reset the health bar to full
         if (healthBar != null)
         {
